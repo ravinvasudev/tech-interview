@@ -11,10 +11,16 @@ public class StackBasic {
     private int capacity;
     private int top;
 
-    public StackBasic(int capacity) {
-        this.num = new int[capacity];
-        this.capacity = capacity;
+    public StackBasic() {
         top = -1;
+        this.capacity = 10; // default capacity
+        this.num = new int[capacity];
+    }
+
+    public StackBasic(int capacity) {
+        top = -1;
+        this.capacity = capacity;
+        this.num = new int[capacity];
     }
 
     public boolean push(int item) throws RuntimeException {

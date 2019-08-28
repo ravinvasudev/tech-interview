@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="datastructures" />
+        <module name="coding-problems" />
         <module name="codingproblems" />
         <module name="algorithms" />
+        <module name="data-structures" />
       </profile>
     </annotationProcessing>
   </component>
