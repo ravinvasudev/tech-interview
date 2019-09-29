@@ -1,4 +1,4 @@
-package io.techinterview.codingproblems;
+package io.techinterview.ds;
 
 import java.util.*;
 import java.util.LinkedList;

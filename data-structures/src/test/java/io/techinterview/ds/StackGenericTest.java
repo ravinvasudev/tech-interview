@@ -1,4 +1,4 @@
-package io.techinterview.codingproblems;
+package io.techinterview.ds;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

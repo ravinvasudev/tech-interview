@@ -1,10 +1,10 @@
-package io.techinterview.codingproblems;
+package io.techinterview.ds;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import io.techinterview.codingproblems.TreeTraversal.Node;
+import io.techinterview.ds.TreeTraversal.Node;
 
 public class TreeTraversalTest {
 
