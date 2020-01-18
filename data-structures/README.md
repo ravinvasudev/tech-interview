@@ -1,28 +1,27 @@
 # Data Structures
 
-Data Structures is one of the key area which developers must focus while preparing technical interviews for large software companies.
+Data Structures is one of the key area which developers must focus while preparing technical interviews. I have put together minimum and the most common data structures
 
 - [Arrays](#array)
-- [Array List](#array-list)
-- [Linked List](#linked-list)
-- [Array vs Array List vs Linked List](#array-vs-array-list-vs-linked-list)
 - [List](#list)
+    - [Array List](#array-list)
+    - [Linked List](#linked-list)
+- [Array vs Array List vs Linked List](#array-vs-array-list-vs-linked-list)
 - [Map](#map)
+    - [HashMap](#hashmap)
 - [Set](#set)
+    - [HashSet](#hashset)
 - [List vs Map vs Set](#list-vs-map-vs-set)
 - [Stack](#stack)
 - [Queue](#queue)
+- [Tree](#tree)
 - [Heap](#heap)
     - [Max Heap](#max-heap)
     - [Min Heap](#min-heap)
     - [Priority Queues](#priority-queue)
-- [Tree](#tree)
 - [Graph](#graph)
 
-
-Let's start with basic and the simplest array.
-
-## Array ##
+# Array
 
 ```text
 Array is the most important data structure and is the base for many other data structures. Thus, it is important to understand it and how they behave in memory. 
@@ -32,8 +31,6 @@ The reason being, my knowledge about arrays was incomplete.
 
 You don't make the same mistake. Learn and practice arrays. Try solving array problems even if you think you do understand them properly.
 ```
-
-[References](http://cslibrary.stanford.edu/)
 
 **What is an array?**
 
@@ -72,7 +69,7 @@ int[] arr = new int[5];
 At this moment array is created with 5 elements but what those element look like? What value do they contain? Did 
 you try printing them? Well, since it is an integer array, elements are initialized with ```int``` default value of zero. 
 
-##### Memory Allocation #####
+**Memory Allocation**
 
 Let say for 5 integer elements, memory is reserved from 101 to 120 considering integer is of 4 bytes. The memory address 
 of 101 is stored in local variable as a reference. When suppose 2nd index is requested, memory location is calculated 
@@ -124,7 +121,7 @@ int element5 = arr[4];
 Deleting an element from an array is **NOT** a constant time operation. It requires us to move other elements to the 
 left by 1. Hence, it is amortized linear time operation O(N)
 
-For example, to delete an element from 3rd index, we have to move 4th & 5th element into 3rd and 4th position.
+For example, to delete 3rd index element from 5 elements array, we have to move 4th & 5th element into 3rd and 4th position.
 There is no way to pass an index and ask array to delete it.
  
 ```
@@ -141,9 +138,22 @@ look for value. In worst case, we may have searched an entire array and found no
 ***Extra Point***: Searching an element in the ordered array is O(Log N) operation using binary search technique.
 
 [Array Example](./src/main/java/io/techinterview/ds/ArrayDiscussion.java)  
-[Reference](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html)
+**References**
+[[1]](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html)
+[[2]](http://cslibrary.stanford.edu/)
 
-## Array List ##
+
+# List
+
+* Use list when sequence matters
+* List is an interface. ArrayList & LinkedList are implementations
+
+**References**
+[[1]](https://docs.oracle.com/javase/tutorial/collections/interfaces/list.html)
+[[2]](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
+[[List Implementations]](https://docs.oracle.com/javase/tutorial/collections/implementations/list.html)
+
+## Array List
 
 * Array List happens to be strong where Array is weak.
 * ArrayList internally keeps an array to hold elements
@@ -154,15 +164,17 @@ look for value. In worst case, we may have searched an entire array and found no
     
 ##### Insert #####
         
-- Adding element is O(1) as it always adds element at last. Other methods are also available to add element at specified index which is O(N)
+- Adding an element is O(1) as it always adds element at last. 
+- Adding N elements takes O(N) time.
+- List interface provide ways to add element at a specified index which is O(N)
 
 ##### Retrieve #####
 
-- Retrieving an element is O(1), requires an index and since it is backed by array
+- Retrieving an element is O(1) since it is backed by array and requires an index
 
 ##### Delete #####
 
-- Deleting element is O(N) requires an index and has to move elements to the left of deleted index
+- Deleting element is O(N), requires an index and has to move elements to the left of deleted index
 
 ##### Search #####
 
@@ -170,11 +182,11 @@ look for value. In worst case, we may have searched an entire array and found no
 
 [Array List Example](./src/main/java/io/techinterview/ds/ArrayListDiscussion.java)
 
-## Linked List ##
+## Linked List
 
 * Linked List happens to be strong where Array & Array List is weak.
 * Gives flexibility to add/delete elements in middle of the list in a constant time
-* Searching is still a O(N)
+* Searching is still O(N)
 
 > Linked List elements are not stored in contagious memory locations as the case with arrays.
 Instead, Linked List has a property where each element contains the location of next and/or previous element.
@@ -186,58 +198,96 @@ Instead, Linked List has a property where each element contains the location of 
 ##### Insert #####
 
 - Insert item is O(1) as it insert item at tail
-
 - Insert item at index is O(Log N) as in
-    - iterate to the index - O(Log N)
-    - create new node - O(1)
-    - manipulate pointers - O(1)
+    * iterate to the index - O(Log N)
+    * create new node - O(1)
+    * manipulate pointers - O(1)
 
 ##### Retrieve #####
 
 - Retrieving element is O(N) as it requires to search the element first.
-
 - Retrieving element by index is O(N) as it takes linear time O(N) to reach the index. This can be reduced to O(Log N)   
 
 ##### Delete #####
 
 - Deleting element is O(N) as it requires to search the element first.
-
 - Deleting element by index is O(N) as it takes linear time O(N) to reach the index. This can be reduced to O(Log N)
 
 ##### Search #####
 
-- Searching an element is a linear time operation O(N)
+- Searching an element is a linear time operation O(N) and can be reduced to O(Log N)
 
 [Linked List Example](./src/main/java/io/techinterview/ds/LinkedListDiscussion.java)  
-[Linked List Basic Implementation](./src/main/java/io/techinterview/ds/LinkedListImpl.java)  
-[Linked List Basic Implementation Tests](./src/test/java/io/techinterview/ds/LinkedListImplTest.java)
+[Basic Implementation](./src/main/java/io/techinterview/ds/LinkedListImpl.java)  
+[Basic Implementation Tests](./src/test/java/io/techinterview/ds/LinkedListImplTest.java)
 
-## Array vs Array List vs Linked List ## 
+## Array vs Array List vs Linked List 
 
 |            | Array | Array List | Linked List |
 | ---------- | ----- | ---------- | ----------- |
-| properties | * items are stored in contagious memory locations on heap <br> * memory of given size reserved at declaration time <br> * has fixed size <br> * has special syntax <br> * good for adding item, retrieving item by index, searching item in ordered array  <br> * bad at inserting in middle, deleting item or searching unordered items | * resizable data structure backed by array <br> * since flexible but consider reallocation function <br> * initialized with default capacity <br> * ensure capacity for large input as reallocation affects performance <br> * good as an array, advantage is the dynamic size | * list where each item keeps a reference to next/prev item <br> * flexible in size <br> * good at adding or removing item in middle of list <br> * bad at searching item |  
-| Insert item     | ~    | O(1) - appends | O(1) - appends |
-| Insert item at  | O(1) - update value at given index | O(N) - shift items to right | O(Log N) - iterate to given index from head or tail, add item, update pointers |
-| Retrieve item at   | O(1) | O(1) | O(Log N) - iterate to given index from head or tail |
-| Delete item     | ~    | O(N) - first search item index  | O(N) - search for item and update pointers |
-| Delete item at  | O(1) - this does not change size | O(N) - shift items | O(Log N) - iterate to given index and update pointers |
-| Search item     | * Linear time O(N) <br> * O(Log N) for ordered items using binary search technique | Linear time O(N) | Linear time O(N) |
+| properties         | * items are stored in contagious memory locations on heap <br> * memory of given size reserved at declaration time <br> * has fixed size <br> * has special syntax <br> * good for adding item, retrieving item by index, searching item in ordered array  <br> * bad at inserting in middle, deleting item or searching unordered items | * resizable data structure backed by array <br> * since flexible but consider reallocation function <br> * initialized with default capacity <br> * ensure capacity for large input as reallocation affects performance <br> * good as an array, advantage is the dynamic size | * list where each item keeps a reference to next/prev item <br> * flexible in size <br> * good at adding or removing item in middle of list <br> * bad at searching item |  
+| Insert item        | O(1) - takes an index & value             | O(1) - adds at end              | O(1) - adds at end                                                             |
+| Insert item at     | O(1) - update value at given index        | O(N) - shift items to right     | O(Log N) - iterate to given index from head or tail, add item, update pointers |
+| Retrieve item      | O(N) - iterate through array to find      | O(N) - iterate through array    | O(N) - iterate through list                                                    |
+| Retrieve item at   | O(1)                                      | O(1)                            | O(Log N) - iterate to given index from head or tail                            |
+| Delete item        | ~                                         | O(N) - first search item index  | O(N) - search for item and update pointers                                     |
+| Delete item at     | O(1) - this does not change size          | O(N) - shift items              | O(Log N) - iterate to given index and update pointers                          |
+| Search item        | * Linear time O(N) <br> * O(Log N) for ordered items using binary search technique | Linear time O(N) | Linear time O(N)                                     |
 
 
-## List ##
-
-- Use list when order matters
-
-## Map ##
+# Map
 
 - Use map when finding item with key matters
-- hashtable implementation
+- Map is an interface and HashMap & HashTable are implementation
+- Map keys to values
+- Map cannot contain duplicate keys
 
-## Set ##
+**How does Map work?**
+Map takes a key,value pair
+
+**References**
+[[1]](https://docs.oracle.com/javase/tutorial/collections/interfaces/map.html)
+[[2]](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
+[[Map Implementations]](https://docs.oracle.com/javase/tutorial/collections/implementations/map.html)
+
+## HashMap
+
+##### Insert #####
+
+*
+
+##### Retrieve #####
+
+*
+
+##### Delete #####
+
+*
+
+##### Search #####
+
+*
+
+# Set
 
 - Use set when uniqueness matters
-- hashtable implementation
+- Set is an interface and HashSet is an implementation
+
+**References**
+[[1]](https://docs.oracle.com/javase/tutorial/collections/interfaces/set.html)
+[[2]](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html)
+[[Set Implementations]](https://docs.oracle.com/javase/tutorial/collections/implementations/set.html)
+
+## HashSet
+
+##### Insert #####
+*
+##### Retrieve #####
+*
+##### Delete #####
+*
+##### Search #####
+*
 
 ## List vs Map vs Set ##
 
@@ -247,8 +297,11 @@ Instead, Linked List has a property where each element contains the location of 
 | Retrieve | O(1) | O(1) | O(1) |
 | Delete   | O(N) | O(1) | O(1) |
 | Search   | O(N) | O(1) | O(1) |
- 
-## Stack ##
+
+**Must Read**
+[[1]](https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html) 
+
+# Stack
 
 - LIFO > Last-In-First-Out
 - FILO > First-In-Last-Out
@@ -269,7 +322,12 @@ Instead, Linked List has a property where each element contains the location of 
 [Generic Stack](./src/main/java/io/techinterview/ds/StackGeneric.java)  
 [Generic Stack Tests](./src/test/java/io/techinterview/ds/StackGenericTest.java)  
 
-## Queue ##
+**References**
+[[1]](https://docs.oracle.com/javase/tutorial/collections/interfaces/deque.html)
+[[2]](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html)
+[[Stack Implementations]](https://docs.oracle.com/javase/tutorial/collections/implementations/deque.html)
+
+# Queue #
 
 - FIFO > First-In-First-Out
 - LILO > Last-In-Last-Out
@@ -284,17 +342,22 @@ Instead, Linked List has a property where each element contains the location of 
 | -------| -------- | ------ | ------ |
 | O(1)   | O(1)     | O(1)   | O(N)   |
 
-## Tree ##
+**References**
+[[1]](https://docs.oracle.com/javase/tutorial/collections/interfaces/queue.html)
+[[2]](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html)
+[[Queue Implementations]](https://docs.oracle.com/javase/tutorial/collections/implementations/queue.html)
+
+# Tree
 
 [Tree Traversal](./src/main/java/io/techinterview/ds/TreeTraversal.java)  
 [Tree Traversal Tests](./src/test/java/io/techinterview/ds/TreeTraversalTest.java)
 
-## Graph ##
-
-## Heap ##
+# Heap
 
 ##### Max Heap #####
 
 ##### Min Heap #####
 
 ##### Priority Queue #####
+
+# Graph
